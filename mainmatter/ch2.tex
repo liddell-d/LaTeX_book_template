@@ -1,0 +1,42 @@
+%%% Second chapter
+
+\chapter{Second Chapter}
+
+\lipsum[21-22]
+
+\section{First Section}
+
+\lipsum[23]
+
+\begin{table}[h!]
+	\begin{center}
+		\caption{Leading caption}
+		\label{tab1}
+		\begin{tabular}{l||c||r|} \hline
+			leftward & centered              & rightward\\
+			\cline{2-3}
+			left     & center \vline\ center & right\\
+			\cline{2-3}
+			left     & center                & right\\
+			\hline
+		\end{tabular}\\[0.5ex]
+	\end{center}
+\end{table}
+
+\section{Second Section}
+
+\lipsum[25]
+
+\begin{figure}[h!]
+	\begin{minipage}{5.9in}
+	    {\mdseries\footnotesize\textsf{\hspace{14em}Map courtesy of Library of Congress free-to-use images.}}
+		\begin{center}
+			{\vspace{-1.5ex}}
+			\includegraphics[width=0.62\linewidth]{world_map2}
+		    \caption{Trailing caption}
+		    \label{fig:map2} 
+	    \end{center}
+    \end{minipage}
+\end{figure}
+
+

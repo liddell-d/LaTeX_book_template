@@ -1,0 +1,25 @@
+\begin{thebibliography}{3}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Has(2018)]{Has}
+Chandra Has.
+\newblock \itshape {A} {C}omplete {B}ook {W}riting in {L}a{T}e{X}\upshape,
+  November 2018.
+\newblock \newline\ttfamily https://youtu.be/TyTx-BuLFh0 \rmfamily accessed
+  July 2021.
+
+\bibitem[Kopka and Daly(2004)]{KnD}
+Helmut Kopka and Patrick~W. Daly.
+\newblock \emph{A Guide to LaTeX}.
+\newblock Addison-Wesley, Boston, MA, fourth edition, 2004.
+
+\bibitem[Lamport(1994)]{Lam}
+Leslie Lamport.
+\newblock \emph{LaTeX: A Documentation Preparation System}.
+\newblock Addison-Wesley, Boston, MA, second edition, 1994.
+
+\end{thebibliography}

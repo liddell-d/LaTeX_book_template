@@ -1,0 +1,166 @@
+
+%%% a book template designed for pdfLaTeX based upon video https://youtu.be/TyTx-BuLFh0
+%%% created by Dan Liddell in July 2021.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt,letterpaper]{book}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% important packages
+% improved tables
+\usepackage{booktabs}
+% improved caption handling
+\usepackage[font=sf]{caption}
+% font specification. use the original Computer Modern fonts.
+\usepackage[T1]{fontenc}
+% set margins
+\usepackage[top=1.5in,bottom=1.25in,headheight=14pt]{geometry} % headheight is to override fancyhdr warning
+% graphics handling
+\usepackage{graphicx}
+\graphicspath{{./graphics/}} % the graphics directory, so you only have to specify file basenames in figure references.
+% index creation
+\usepackage{makeidx}
+\makeindex
+% bibliography citations geared toward natural science publications
+\usepackage[comma]{natbib}
+% add index and bibliography to toc
+% there appears to be a bug in the interaction of hyperref with tocbibind: the toc link to the index doesn't go to the proper page.
+\usepackage{tocbibind}
+% toc, lof, and lot support
+\usepackage[titles]{tocloft}
+% use sans-serif font for the frontmatter tables
+\renewcommand{\cftchapfont}{\sffamily}
+\renewcommand{\cftsecfont}{\sffamily}
+\renewcommand{\cftchappagefont}{\sffamily}
+\renewcommand{\cftsecpagefont}{\sffamily}
+\renewcommand{\cftsubsecfont}{\sffamily}
+\renewcommand{\cftsubsecpagefont}{\sffamily}
+\renewcommand{\cftfigfont}{\sffamily}
+\renewcommand{\cftfigpagefont}{\sffamily}
+\renewcommand{\cfttabfont}{\sffamily}
+\renewcommand{\cfttabpagefont}{\sffamily}
+% extended color support
+\usepackage[table,svgnames]{xcolor}
+
+%%% include these if writing mathematics
+% \usepackage{amsmath,amssymb,amsfonts}
+% \usepackage{mathpmx}
+
+%%%%%%%%%%%%% some advice about setting headers
+% https://tex.stackexchange.com/questions/89914/chapter-name-in-the-header-with-chapter
+% https://alvinalexander.com/blog/post/latex/get-chapter-name-section-name-inheader-of-page-in-latex-document/
+%%%%%%%%%%%%%
+% make sans-serif section headers
+\usepackage{titlesec}
+\titleformat{\chapter}{\sffamily\huge\bfseries}{}{0pt}{}
+\titleformat{\section}{\sffamily\LARGE\mdseries}{}{0pt}{}
+\titleformat{\subsection}{\sffamily\large\mdseries}{}{0pt}{}
+% page header and footer management
+\usepackage{fancyhdr}
+\fancyhf{}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+\fancyhead[LE]{\sffamily\itshape\nouppercase{\rightmark}}
+\fancyhead[RO]{\sffamily\bfseries\upshape\nouppercase{\leftmark}}
+\fancyheadoffset[RE,LO]{-0.21\textwidth}
+\pagestyle{fancy}
+% make auto-generated blank pages empty
+\usepackage{emptypage}
+% or make them plain
+% \makeatletter
+% \def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+%	\hbox{}\thispagestyle{plain}\newpage\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+% \makeatother
+% or make them empty
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% miscellaneous packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% for drafts
+% enter filler text
+\usepackage{lipsum}
+% enable double spacing
+% \usepackage{setspace}
+%%% enable hypertext
+% usual advice is to load this package last, but glossaries must follow it
+% in order for glossary links to work properly.
+\usepackage[colorlinks]{hyperref}
+\hypersetup{
+	colorlinks=true, % set true if you want colored links
+	linktoc=all,     % set to all if you want both sections and subsections linked
+	linkcolor=blue,  % choose some color if you want links to stand out
+	citecolor=blue,
+	urlcolor=blue
+}
+%%% Include glossary entries
+% include a glossary
+\usepackage[toc]{glossaries}
+\newglossaryentry{latex}{name={LaTeX}, description={A document preparation system based upon TeX created by Leslie Lamport}}
+\newglossaryentry{tex}{name={TeX}, description={A document preparation system created by Donald Knuth}}
+\makeglossaries
+
+\begin{document}
+	
+% frontmatter: half title, frontispiece, title, colophon (copyright), dedication, toc, lof, lot, preface, acknowledgements
+\frontmatter
+\include{frontmatter/half_title_frontispiece}
+\include{frontmatter/title}
+\include{frontmatter/colophon}
+\include{frontmatter/dedication}
+% format toc depth to include section heads but no lower
+\setcounter{tocdepth}{2}
+\tableofcontents
+\listoffigures
+\listoftables
+\include{frontmatter/preface_acknowledgements}
+
+% suppress enumeration of chapters, appendices, and sections
+\setcounter{secnumdepth}{-1}
+
+% mainmatter: parts and chapters
+\mainmatter
+% move the page numbers to the corners of page footers
+\fancyfoot{}
+\fancyfoot[RO]{\hfill\thepage}
+\fancyfoot[LE]{\thepage\hfill}
+% do it for initial pages in chapters also
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[OR,LE]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+\include{mainmatter/ch1}
+\include{mainmatter/ch2}
+\include{mainmatter/ch3}
+\appendix
+\include{backmatter/apx1}
+
+% backmatter: appendices, bibliography, index, postface
+\backmatter 
+% change back to centered page numbers in roman numerals
+\renewcommand{\thepage}{\roman{page}}
+\fancypagestyle{plain}{
+	\fancyhf{} % clear all header and footer fields
+	\fancyfoot[C]{\thepage}
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0pt}
+}
+\printglossary
+\bibliographystyle{plainnat}
+% if not using tocbibind: \addcontentsline{toc}{chapter}{Bibliography}
+\bibliography{backmatter/biblio}
+{
+% make the index in the current configuration start on an odd page.
+% this can be better handled with ifoddpage package.
+  \cleardoublepage
+% use sans-serif face for index entries to match frontmatter auto-generated lists
+% if not using tocbibind: \addcontentsline{toc}{chapter}{Index}
+  \sffamily 
+  \printindex
+% print blank reverse page for current configuration of the index.
+  \cleardoublepage
+}
+\include{backmatter/postface}
+	
+%%% front cover, spline, backcover	
+	
+\end{document}

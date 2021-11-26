@@ -1,0 +1,15 @@
+*.aux
+*.bak
+*.blg
+*.glg
+*.glo
+*.idx
+*.ilg
+*.ist
+*.lof
+*.log
+*.lot
+*.out
+*.swp
+*.synctex.gz
+*.toc

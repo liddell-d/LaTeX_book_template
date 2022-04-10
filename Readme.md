@@ -6,7 +6,7 @@ This directory consists of a template for the LaTeX book class and contains file
 
 #### File Organization
 
-The primary file (containing the preamble) is book.tex. It is fairly well commented, so the purposes of things in it are relatively apparent. As always, details can be found in package documentation on CTAN or in your LaTeX installation.
+The primary file (containing the preamble) is _book.tex_. It is fairly well commented, so the purposes of things in it are relatively apparent. As always, details can be found in package documentation on CTAN or in your LaTeX installation.
 
 The compiled glossary, bibliography, and index files have been included and can be recompiled as needed. The bibliography database file is in the backmatter subdirectory.
 
@@ -16,7 +16,7 @@ The subdirectories are named in an obvious way that corresponds to the main divi
 
 Some notes about page layout choices, which are simply matters of taste. 
 
-Most of the choices mentioned here that are overrides of default behaviors are configured in the book.tex file and are commented for easy reference. In some cases, however, the overrides occur in \include files. Simply comment out overrides to restore default behaviors.
+Most of the choices mentioned here that are overrides of default behaviors are configured in the _book.tex_ file and are commented for easy reference. In some cases, however, the overrides occur in \include files. Simply comment out overrides to restore default behaviors.
 
 Automatically generated pages having no content in their bodies are rendered as blank by the emptypage package. This is not a default.
 

@@ -28,7 +28,7 @@ The header font throughout is sans-serif. The default is Roman. This override ap
 
 Page headers have bold chapter names in mixed-case letters in right-facing pages and italic section names in left-facing pages. This is not the default.
 
-Enumeration of chapters and sections, something appropos to technical works, in addition to being a default behavior, has been suppressed. To disable this override, comment out this line in book.tex:
+Enumeration of chapters and sections, something appropos to technical works, in addition to being a default behavior, has been suppressed. To disable this override, comment out this line in _book.tex_:
 
         \setcounter{secnumdepth}{-1}
 
